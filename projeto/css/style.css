@@ -657,14 +657,21 @@ h2 em {
 
 .showreel-meta {
     position: absolute;
+    left: 50%;
     bottom: 3rem;
-    left: 5vw;
-    right: 5vw;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 6vw);
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 3rem);
     font: 9px var(--mono);
-    letter-spacing: .1em;
-    color: rgba(255, 255, 255, .5)
+    letter-spacing: .12em;
+    color: rgba(255, 255, 255, .5);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap
 }
 
 .services {

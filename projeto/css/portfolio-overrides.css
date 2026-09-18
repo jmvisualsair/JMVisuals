@@ -42,9 +42,14 @@
   border-radius: 18px;
   background: #101010;
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
-  filter: saturate(1.05) contrast(1.03);
+  filter: saturate(1.05) contrast(1.03) blur(0);
   cursor: pointer;
   pointer-events: auto;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.showreel:not(.is-playing) .showreel-video {
+  filter: saturate(0.8) contrast(0.9) blur(4px) brightness(0.72);
 }
 
 .showreel-content,
