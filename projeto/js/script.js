@@ -61,24 +61,16 @@ document.querySelectorAll('.placeholder-media:not(.hero-media)').forEach((elemen
   image.src = match[1].trim();
 });
 
-const modal = document.querySelector('.video-modal');
-const video = modal.querySelector('video');
-const videoFrame = modal.querySelector('.video-frame');
-const openModal = () => {
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('is-locked');
-  if (video.readyState > 0) videoFrame.classList.add('has-video');
+const showreel = document.querySelector('.showreel');
+const video = document.querySelector('#showreel-video');
+const playShowreel = () => {
+  showreel.classList.add('is-playing');
+  video.play();
 };
-const closeModal = () => {
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
+const stopShowreel = () => {
+  showreel.classList.remove('is-playing');
   video.pause();
-  document.body.classList.remove('is-locked');
 };
 
-document.querySelector('.play-button').addEventListener('click', openModal);
-document.querySelector('.modal-close').addEventListener('click', closeModal);
-modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
-video.addEventListener('loadedmetadata', () => videoFrame.classList.add('has-video'));
+document.querySelector('.play-button').addEventListener('click', playShowreel);
+video.addEventListener('ended', stopShowreel);

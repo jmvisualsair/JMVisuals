@@ -24,14 +24,14 @@ O hero troca automaticamente entre `hero.jpg` em telas de até 800px e `hero2.jp
 
 - `01`: hero mobile `hero.jpg` / desktop `hero2.jpg`
 - `02`: `imagem1.jpg`; `03`: `imagem2.jpg`; `04`: `imagem3.jpg`; `05`: `imagem4.jpg`; `06`: `project-05.jpg`
-- `07`: imagem de fundo do showreel; vídeo em `assets/videos/showreel.mp4`
+- `07`: imagem de fundo do showreel; vídeo em `assets/videos/video1.mp4`
 - `08` e `09`: fotos da equipe `team-joao.jpg` e `team-miguel.jpg`
 - `10` a `12` e `14`: bastidores `bastidores-01.jpg`, `bastidores-02.jpg`, `bastidores-03.jpg` e `bastidores-05.jpg`
 - `15` a `18`: posts do Instagram
 
 ## Vídeo
 
-Coloque o showreel em `assets/videos/showreel.mp4`. O botão do Showreel já abre o player HTML5 e mostra o placeholder enquanto o arquivo não existe.
+O showreel está em `assets/videos/video1.mp4`. O botão do Showreel já abre o player HTML5 e mostra o placeholder enquanto o arquivo não existe.
 
 ## Links de contato
 

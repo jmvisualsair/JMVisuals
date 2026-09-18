@@ -23,6 +23,30 @@
   aspect-ratio: 1 / 1;
 }
 
+.showreel-video {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: #101010;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.showreel.is-playing .showreel-video {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.showreel.is-playing .showreel-content,
+.showreel.is-playing .showreel-meta {
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 800px) {
   .project-card,
   .project-card:nth-child(n) {
