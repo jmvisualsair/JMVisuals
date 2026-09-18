@@ -62,15 +62,62 @@ document.querySelectorAll('.placeholder-media:not(.hero-media)').forEach((elemen
 });
 
 const showreel = document.querySelector('.showreel');
-const video = document.querySelector('#showreel-video');
-const playShowreel = () => {
-  showreel.classList.add('is-playing');
-  video.play();
-};
-const stopShowreel = () => {
-  showreel.classList.remove('is-playing');
-  video.pause();
-};
+const showreelVideo = document.querySelector('#showreel-video');
+const showreelButton = document.querySelector('.play-button');
 
-document.querySelector('.play-button').addEventListener('click', playShowreel);
-video.addEventListener('ended', stopShowreel);
+if (showreel && showreelVideo && showreelButton) {
+  const setShowreelState = (isPlaying) => {
+    showreel.classList.toggle('is-playing', isPlaying);
+    showreelButton.setAttribute('aria-label', isPlaying ? 'Pausar Showreel' : 'Assistir Showreel');
+  };
+
+  const toggleShowreel = async () => {
+    if (showreelVideo.paused) {
+      if (showreelVideo.ended) {
+        showreelVideo.currentTime = 0;
+      }
+      setShowreelState(true);
+      showreelVideo.muted = false;
+      try {
+        await showreelVideo.play();
+      } catch (error) {
+        console.warn('Showreel playback blocked:', error);
+      }
+      return;
+    }
+
+    showreelVideo.pause();
+    setShowreelState(false);
+  };
+
+  const stopShowreel = () => {
+    showreelVideo.pause();
+    showreelVideo.currentTime = 0;
+    setShowreelState(false);
+  };
+
+  showreelButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleShowreel();
+  });
+
+  showreelVideo.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (showreelVideo.paused) {
+      toggleShowreel();
+      return;
+    }
+    showreelVideo.pause();
+    setShowreelState(false);
+  });
+
+  showreelVideo.addEventListener('pause', () => {
+    if (!showreelVideo.ended) {
+      setShowreelState(false);
+    }
+  });
+
+  showreelVideo.addEventListener('ended', stopShowreel);
+}
+
+
