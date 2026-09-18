@@ -660,8 +660,7 @@ h2 em {
     left: 50%;
     bottom: 3rem;
     transform: translateX(-50%);
-    width: max-content;
-    max-width: calc(100% - 6vw);
+    width: calc(100% - 8vw);
     display: flex;
     align-items: center;
     justify-content: center;
